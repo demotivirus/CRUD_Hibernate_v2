@@ -1,24 +1,20 @@
 package service;
 
 import dao.UserDao;
-import dao.UserConnection;
+import daoFactory.DaoFactory;
 import model.User;
 
 import java.util.List;
 
 public class UserService {
     private static UserService userService;
-    private UserDao userDao;
+    private UserDao userDao = DaoFactory.getDaoFactory().createUserDao();
 
     private UserService(){}
 
-    private UserService(UserDao userDao) {
-        this.userDao = userDao;
-    }
-
     public static UserService getInstance(){
         if (userService == null)
-            userService = new UserService(new UserConnection().connect());
+            userService = new UserService();
         return userService;
     }
 

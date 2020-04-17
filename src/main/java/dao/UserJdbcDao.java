@@ -1,16 +1,22 @@
 package dao;
 
 import model.User;
+import util.DBHelper;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class UserJdbcDao implements UserDao{
-    private Connection connection;
+    private Connection connection = DBHelper.getInstance().getConnection();
+    private static UserJdbcDao instance;
 
-    public UserJdbcDao(Connection connection){
-        this.connection = connection;
+    private UserJdbcDao(){}
+
+    public static UserJdbcDao getInstance(){
+        if (instance == null)
+            return instance = new UserJdbcDao();
+        return instance;
     }
 
     public void addUser(User user) {

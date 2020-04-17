@@ -4,16 +4,20 @@ import model.User;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.hibernate.query.Query;
+import util.DBHelper;
 
-import java.io.Serializable;
 import java.util.List;
 
 public class UserHibernateDao implements UserDao{
-    private SessionFactory sessionFactory;
+    private static UserHibernateDao instance;
+    private SessionFactory sessionFactory = DBHelper.getInstance().getConfiguration();
 
-    public UserHibernateDao(SessionFactory sessionFactory){
-        this.sessionFactory = sessionFactory;
+    private UserHibernateDao(){}
+
+    public static UserHibernateDao getInstance(){
+        if (instance == null)
+            return instance = new UserHibernateDao();
+        return instance;
     }
 
     @Override

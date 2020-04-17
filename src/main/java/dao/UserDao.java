@@ -1,16 +1,9 @@
 package dao;
 
-import factory.Connect;
 import model.User;
-
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
 import java.util.List;
 
-public interface UserDao {
+public interface UserDao{
     void addUser(User user);
 
     User getUser(long id);
