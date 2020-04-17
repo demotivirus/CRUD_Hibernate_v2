@@ -1,5 +1,6 @@
 package dao;
 
+import factory.Connect;
 import model.User;
 
 import java.sql.PreparedStatement;

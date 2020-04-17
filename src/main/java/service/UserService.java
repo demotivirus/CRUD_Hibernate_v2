@@ -1,12 +1,8 @@
 package service;
 
 import dao.UserDao;
-import dao.UserDaoFactory;
-import dao.UserHibernateDao;
+import dao.UserConnection;
 import model.User;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import util.DBHelper;
 
 import java.util.List;
 
@@ -22,7 +18,7 @@ public class UserService {
 
     public static UserService getInstance(){
         if (userService == null)
-            userService = new UserService(new UserDaoFactory().getUserDAOImpl());
+            userService = new UserService(new UserConnection().connect());
         return userService;
     }
 

@@ -1,18 +1,12 @@
 package dao;
 
-import model.User;
-import org.hibernate.Session;
 import util.DBHelper;
 import util.PropertiesReader;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Properties;
+//Now i can create connection from all model like here
+public class UserConnection{
 
-public class UserDaoFactory implements AbstractFactory{
-
-    @Override
-    public UserDao getUserDAOImpl() {
+    public UserDao connect() {
         PropertiesReader propertiesReader = new PropertiesReader();
         String daoType = propertiesReader.readConfig();
         if (daoType.equalsIgnoreCase("hibernate")) {
